@@ -48,18 +48,25 @@ public class MyString {
      * @return true is str1 is a subset of str2, false otherwise
      */
     public static boolean subsetOf(String str1, String str2) {
-        boolean finel = false;
-        for(int i=0; i<str1.length(); i++){
-            if(countChar(str2, str2.charAt(i)) >= 1){
-                finel = true;
-            }
-            else{
-                finel = false;
-                break;
+        int[] charCountStr1 = new int[256];
+        int[] charCountStr2 = new int[256];
+    
+        for (int i = 0; i < str1.length(); i++) {
+            charCountStr1[str1.charAt(i)]++;
+        }
+    
+        for (int i = 0; i < str2.length(); i++) {
+            charCountStr2[str2.charAt(i)]++;
+        }
+    
+        for (int i = 0; i < 256; i++) {
+            if (charCountStr1[i] > charCountStr2[i]) {
+                return false; 
             }
         }
-        return finel;
+        return true;
     }
+    
 
     /** Returns a string which is the same as the given string, with a space
      * character inserted after each character in the given string, except
@@ -109,27 +116,24 @@ public class MyString {
      */
     public static String remove(String str1, String str2) {
         StringBuilder newstr = new StringBuilder();
-       
-        int[] countInStr1 = new int[256];  
-        
+        int[] charCountStr1 = new int[256];
+    
         for (int i = 0; i < str1.length(); i++) {
-            countInStr1[str1.charAt(i)]++;
+            charCountStr1[str1.charAt(i)]++;
         }
     
-        
         for (int i = 0; i < str2.length(); i++) {
             char c = str2.charAt(i);
-            if (countInStr1[c] > 0) {
-             
-                countInStr1[c]--;
+            if (charCountStr1[c] > 0) {
+                charCountStr1[c]--; 
             } else {
-            
-                newstr.append(c);
+                newstr.append(c); 
             }
         }
-        
+    
         return newstr.toString();
     }
+    
     
     
        
