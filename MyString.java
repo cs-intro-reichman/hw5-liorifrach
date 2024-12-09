@@ -120,7 +120,6 @@ public class MyString {
      */
     public static String remove(String str1, String str2) {
         StringBuilder result = new StringBuilder(str2); 
-        System.out.println("Initial: " + result); 
         for (int i = 0; i < str1.length(); i++) {
             char ch = str1.charAt(i);
             int index = result.indexOf(String.valueOf(ch)); 
