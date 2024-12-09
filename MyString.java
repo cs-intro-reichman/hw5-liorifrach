@@ -77,15 +77,19 @@ public class MyString {
      * @return a string consisting of the characters of str, separated by spaces.
      */
     public static String spacedString(String str) {
-        StringBuilder newstr = new StringBuilder(str.length()*2 -1);
-        for(int i=0; i<str.length(); i++){
+        if (str.length() <= 1) {
+            return str;
+        }
+        StringBuilder newstr = new StringBuilder(str.length() * 2 - 1);
+        for (int i = 0; i < str.length(); i++) {
             newstr.append(str.charAt(i));
-            if (i < str.length() -1 ) {
+            if (i < str.length() - 1) {
                 newstr.append(' ');
             }
         }
         return newstr.toString();
     }
+    
   
     /**
      * Returns a string of n lowercase letters, selected randomly from 
@@ -115,29 +119,18 @@ public class MyString {
      * @return a string consisting of str1 minus all the characters of str2
      */
     public static String remove(String str1, String str2) {
-        StringBuilder newstr = new StringBuilder();
-        int[] charCountStr1 = new int[256];
- 
+        StringBuilder result = new StringBuilder(str2); 
+        System.out.println("Initial: " + result); 
         for (int i = 0; i < str1.length(); i++) {
-            charCountStr1[str1.charAt(i)]++;
-        }
-    
-        for (int i = 0; i < str2.length(); i++) {
-            char c = str2.charAt(i);
-            if (charCountStr1[c] > 0) {
-                charCountStr1[c]--;
-            } else {
-                newstr.append(c); 
+            char ch = str1.charAt(i);
+            int index = result.indexOf(String.valueOf(ch)); 
+            if (index != -1) {
+                result.deleteCharAt(index);
             }
         }
-    
-        return newstr.toString();
+        return result.toString(); 
     }
     
-    
-    
-    
-       
 
     /**
      * Returns a string consisting of the given string, with the given 
