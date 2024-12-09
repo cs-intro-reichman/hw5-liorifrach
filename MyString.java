@@ -117,7 +117,7 @@ public class MyString {
     public static String remove(String str1, String str2) {
         StringBuilder newstr = new StringBuilder();
         int[] charCountStr1 = new int[256];
-    
+ 
         for (int i = 0; i < str1.length(); i++) {
             charCountStr1[str1.charAt(i)]++;
         }
@@ -125,7 +125,7 @@ public class MyString {
         for (int i = 0; i < str2.length(); i++) {
             char c = str2.charAt(i);
             if (charCountStr1[c] > 0) {
-                charCountStr1[c]--; 
+                charCountStr1[c]--;
             } else {
                 newstr.append(c); 
             }
@@ -133,6 +133,7 @@ public class MyString {
     
         return newstr.toString();
     }
+    
     
     
     
