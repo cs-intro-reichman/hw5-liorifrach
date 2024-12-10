@@ -134,7 +134,7 @@ public class Scrabble {
 			System.out.println(input + " earned " + wordPoints + " points. Total: " + score + " points");
 	
 			//Removing the word letters from thr hand
-			hand = MyString.remove(input, hand);
+			hand = MyString.remove(hand, input);
 			
 		}
 		if (hand.length() == 0) {
@@ -214,8 +214,8 @@ public class Scrabble {
 	}
 	public static void testPlayHands() {
 		init(); // Loads the dictionary
-		playHand("aretiin");
-		//playHand("ocostrza");
+		//playHand("aretiin");
+		playHand("ocostrza");
 		//playHand("arbffip");
 	}
 	
