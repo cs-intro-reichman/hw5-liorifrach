@@ -60,24 +60,16 @@ public class Scrabble {
 	// If the length of the word equals the length of the hand, adds 50 points to the score.
 	// If the word includes the sequence "runi", adds 1000 points to the game.
 	public static int wordScore(String word) {
-		String one = "aeimquy";
-		String three = "bfjnrvzcgkosw";
-		String two = "dhlptx";
+		
 		int score = 0; 
 	
 		for (int i = 0; i < word.length(); i++) {
-			if (one.indexOf(word.charAt(i)) != -1) {
-				score += 1;
-			} else if (two.indexOf(word.charAt(i)) != -1) {
-				score += 2;
-			} else if (three.indexOf(word.charAt(i)) != -1) {
-				score += 3;
-			}
+			char letter = word.charAt(i);
+			score += SCRABBLE_LETTER_VALUES[letter - 'a'];
 		}
 	
 		score *= word.length();
 	
-		// Extras 
 
 		String runistr = "runi";
 		if (MyString.subsetOf(runistr, word)) {
@@ -95,9 +87,9 @@ public class Scrabble {
 	// (these two vowels make it easier for the user to construct words)
 	public static String createHand() {
 
-		String hand = MyString.randomStringOfLetters(HAND_SIZE -2);
-		MyString.insertRandomly('e', hand);
-		MyString.insertRandomly('a', hand);
+	    String hand = MyString.randomStringOfLetters(HAND_SIZE -2);
+		hand = MyString.insertRandomly('e', hand);
+		hand = MyString.insertRandomly('a', hand);
 
 		return hand;
 	}
